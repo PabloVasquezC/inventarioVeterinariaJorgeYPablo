@@ -16,6 +16,7 @@ from telnetlib import LOGOUT
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR / 'templates'
+TEMPLATES_DIR = BASE_DIR / 'templates'
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gestorUser',
 ]
 
 MIDDLEWARE = [
@@ -75,17 +75,14 @@ WSGI_APPLICATION = 'inventarioVeterinariaJorgeYPablo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-import pymysql
-pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'loginVT',
-        'USER': 'root',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -140,4 +137,15 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
+}
+
+LOGIN_REDIRECT_URL = '/' # Redirige a la página principal
+LOGOUT_REDIRECT_URL = '/'   # Redirige a la página principal
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
 }
