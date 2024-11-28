@@ -14,9 +14,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from tkinter.font import names
 from django.contrib import admin
 from django.urls import path
 
+from django.urls import path, include
+from django.views.generic.base import TemplateView
+from gestorUser.views import index
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", index, name="home"),
+    path("usuarios/", include("gestorUser.urls"))
 ]

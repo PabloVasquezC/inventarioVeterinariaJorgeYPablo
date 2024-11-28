@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import LOGOUT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gestorUser',
-    'gestorProductos'
 ]
 
 MIDDLEWARE = [
@@ -74,17 +73,12 @@ WSGI_APPLICATION = 'inventarioVeterinariaJorgeYPablo.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-import pymysql
-pymysql.install_as_MySQLdb()
-
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'inventarioVeterinariaBD',
-        'USER': 'root',
-        'PASSWORD': 'YO.7531.kurumi',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -131,6 +125,18 @@ STATICFILES_DIRS = [STATIC_URL]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/' # Redirige a la página principal
+LOGOUT_REDIRECT_URL = '/'   # Redirige a la página principal
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 LOGIN_REDIRECT_URL = '/' # Redirige a la página principal
 LOGOUT_REDIRECT_URL = '/'   # Redirige a la página principal
