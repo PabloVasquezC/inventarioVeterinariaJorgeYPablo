@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'loginVT',
         'USER': 'root',
-        'PASSWORD': 'YO.7531.kurumi',
+        'PASSWORD': '',
     }
 }
 
