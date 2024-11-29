@@ -1,15 +1,68 @@
 {% extends "base/base.html" %}
 
 {% block titulo %}
-    INDEX 😎😎😎
+    Veterinaria J&P - Inicio
 {% endblock %}
 
 {% block contenido %}
-    {% if user.is_superuser %}
-        <h1> Bienvenido {{ user.username }}</h1> <h1>Eres un superusuario ...</h1>
-        
-    {% else %}
-        <h1> Bienvenido  {{ user.username }}</h1> <h1>No eres un superusuario</h1>
-        
-    {% endif %}
+    <div class="container mt-5">
+        <!-- Mensaje de bienvenida -->
+        <div class="jumbotron text-center bg-light shadow-sm rounded">
+            {% if user.is_superuser %}
+                <h1 class="display-4">¡Bienvenido, {{ user.username }}! 🐾</h1>
+                <p class="lead">Tienes acceso completo como superusuario.</p>
+                <a href="{% url 'admin:index' %}" class="btn btn-success btn-lg mt-3">
+                    Ir al Panel de Administración
+                </a>
+            {% else %}
+                <h1 class="display-4">¡Hola, {{ user.username }}! 🐶🐱</h1>
+                <p class="lead">Explora nuestros servicios y productos.</p>
+            {% endif %}
+        </div>
+
+        <!-- Sección de servicios -->
+        <div class="row text-center mt-5">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-stethoscope fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Consultas Veterinarias</h5>
+                        <p class="card-text">Atención personalizada para tu mascota con los mejores profesionales.</p>
+                        <a href="#" class="btn btn-primary">Saber más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-bone fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Productos</h5>
+                        <p class="card-text">Descubre una amplia variedad de productos para el cuidado de tu mascota.</p>
+                        <a href="#" class="btn btn-warning">Ver productos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-syringe fa-3x text-danger mb-3"></i>
+                        <h5 class="card-title">Vacunación</h5>
+                        <p class="card-text">Protege a tus peludos amigos con nuestro servicio de vacunación.</p>
+                        <a href="#" class="btn btn-danger">Agenda tu cita</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de contacto -->
+        <div class="text-center mt-5">
+            <h2 class="mb-4">Contáctanos</h2>
+            <p>📍 Dirección: Calle Principal 123, Ciudad</p>
+            <p>📞 Teléfono: +56 9 1234 5678</p>
+            <p>📧 Email: contacto@veterinariajp.cl</p>
+            <a href="https://www.instagram.com/veterinariajp" class="btn btn-info">
+                <i class="fab fa-instagram"></i> Síguenos en Instagram
+            </a>
+        </div>
+    </div>
 {% endblock %}
