@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load static %}
 
 {% block titulo %}
     Veterinaria J&P - Inicio
@@ -16,8 +17,22 @@
                 </a>
             {% else %}
                 <h1 class="display-4">¡Hola, {{ user.username }}! 🐶🐱</h1>
+                <p>¡Cuidamos a tus mascotas como parte de nuestra familia!
+                    En VeterinariaJ&P, entendemos que tus mascotas son un miembro especial de tu hogar. Por eso, ofrecemos atención integral, compasiva y profesional para garantizar su bienestar en cada etapa de la vida.</p>
                 <p class="lead">Explora nuestros servicios y productos.</p>
             {% endif %}
+        </div>
+
+        <div class="row my-4">
+            <div class="col-md-4">
+                <img src="https://papelmatic.com/wp-content/uploads/2019/09/papelmatic-higiene-profesional-limpieza-desinfeccion-clinicas-veterinarias.jpg" class="img-fluid rounded shadow-sm" alt="Primera imagen">
+            </div>
+            <div class="col-md-4">
+                <img src="https://axoncomunicacion.net/wp-content/uploads/2023/11/cerca-veterinario-cuidando-perro.jpg" class="img-fluid rounded shadow-sm" alt="Segunda imagen">
+            </div>
+            <div class="col-md-4">
+                <img src="https://postgradoveterinaria.com/wp-content/uploads/especialidades-veterinarias.jpg" class="img-fluid rounded shadow-sm" alt="Tercera imagen">
+            </div>
         </div>
 
         <!-- Sección de servicios -->
