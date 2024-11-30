@@ -45,12 +45,23 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    {% block contenido %}
+                    {% comment %} iterar productos {% endcomment %}
 
-                    Contenido
-
-                    {% endblock %}
+                    <h1>Productos Disponibles</h1>
+                    <ul>
+                        {% for producto in productos %}
+                            <li>
+                                <strong>{{ producto.nombre }}</strong><br>
+                                {{ producto.descripcion }}<br>
+                                Precio: ${{ producto.precio }}<br>
+                                {% if producto.disponible %}
+                                    <span style="color: green;">Disponible</span>
+                                {% else %}
+                                    <span style="color: red;">No disponible</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
 
                 </div>
                 <!-- /.container-fluid -->

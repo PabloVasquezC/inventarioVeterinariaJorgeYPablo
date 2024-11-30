@@ -21,10 +21,13 @@ from django.urls import path
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from gestorUser.views import index
+from gestorProductos.views import lista_productos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", index, name="home"),
-    path("usuarios/", include("gestorUser.urls"))
+    path("usuarios/", include("gestorUser.urls")),
+    path("productos/", include("gestorProductos.urls"))
+
 ]
