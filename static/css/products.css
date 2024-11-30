@@ -1,0 +1,18 @@
+.products {
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex; 
+    flex-direction: column; 
+    width: 300px; 
+    border: 1px solid; 
+    border-radius: 20px; 
+    box-shadow: 2px 3px 8px green;
+
+    &:hover {
+        transform: scale(1.03);
+        box-shadow: 3px 4px 9px rgb(0, 181, 0);
+
+;
+
+    }
+}
