@@ -13,9 +13,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{% url 'lista_productos' %}">
             <i class="fa-solid fa-cart-shopping"></i>            
-            <span>Productos</span></a>
+        <span >Productos</span></a>
     </li>
     {% if user.is_superuser %}
     <!-- Divider -->
