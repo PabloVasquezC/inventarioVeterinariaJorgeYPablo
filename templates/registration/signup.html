@@ -14,30 +14,39 @@
 
         <div class="form-group">
             <input type="text"
-                   class="form-control form-control-user"
-                   id="id_username"
-                   name="{{ form.username.html_name }}"
-                   autocomplete="username" autofocus
-                   autocapitalize="none"
-                   required placeholder="Nombre de usuario..."
-                   value="{{ form.username.value|default_if_none:'' }}">
+                class="form-control form-control-user"
+                id="id_username"
+                name="{{ form.username.html_name }}"
+                autocomplete="username" autofocus
+                autocapitalize="none"
+                required placeholder="Nombre de usuario..."
+                value="{{ form.username.value|default_if_none:'' }}">
         </div>
 
         <div class="form-group">
+            <input type="email"
+                class="form-control form-control-user"
+                id="id_email"
+                name="{{ form.email.html_name }}"
+                autocomplete="email"
+                required placeholder="Correo electrónico..."
+                value="{{ form.email.value|default_if_none:'' }}">
+
+        <div class="form-group">
             <input type="password"
-                   class="form-control form-control-user"
-                   id="id_password1"
-                   name="{{ form.password1.html_name }}"
-                   autocomplete="new-password"
-                   required placeholder="Contraseña">
+                class="form-control form-control-user"
+                id="id_password1"
+                name="{{ form.password1.html_name }}"
+                autocomplete="new-password"
+                required placeholder="Contraseña">
         </div>
         <div class="form-group">
             <input type="password"
-                   class="form-control form-control-user"
-                   id="id_password2"
-                   name="{{ form.password2.html_name }}"
-                   autocomplete="new-password"
-                   required placeholder="Repite la contraseña">
+                class="form-control form-control-user"
+                id="id_password2"
+                name="{{ form.password2.html_name }}"
+                autocomplete="new-password"
+                required placeholder="Repite la contraseña">
         </div>
 
         <button type="submit" class="btn btn-success btn-user btn-block">
