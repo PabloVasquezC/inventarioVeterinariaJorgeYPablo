@@ -7,6 +7,22 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+from .forms import EditUserForm
+
+class EditUserView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = EditUserForm
+    template_name = "registration/edit_user.html"
+    success_url = reverse_lazy("index")  # Cambia "index" si tu URL principal es distinta
+
+    def get_object(self):
+        # Devuelve el usuario autenticado para evitar editar otros usuarios
+        return self.request.user
+    
 # Create your views here.
 
 @login_required

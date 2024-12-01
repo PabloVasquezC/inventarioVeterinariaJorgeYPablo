@@ -6,9 +6,9 @@ from django.db import models
 class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     precio = models.IntegerField()
-    stock = models.IntegerField()
+    stock = models.IntegerField(default=0)
     descripcion = models.TextField()
-    categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
+    categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, default=1)
     imagen = models.TextField(default='')
 
     def __str__(self):
