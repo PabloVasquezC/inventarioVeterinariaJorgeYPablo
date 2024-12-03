@@ -54,7 +54,10 @@ def editar_producto(request, id):
         producto.precio = request.POST.get('precio')
         producto.imagen = request.POST.get('imagen')
         producto.stock = request.POST.get('stock')
+        categoria_id = request.POST.get('categoria')
         producto.save()
+        
+        categoria = Categoria.objects.get(id=categoria_id)  # Obtén la categoría seleccionada
 
         return redirect('lista_productos')
 
