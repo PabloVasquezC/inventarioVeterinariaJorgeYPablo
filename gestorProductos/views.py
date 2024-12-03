@@ -46,6 +46,8 @@ def agregar_producto(request):
 
 def editar_producto(request, id):
     producto = Producto.objects.get(id=id)
+    categorias = Categoria.objects.all()  # Obtén todas las categorías
+
     if request.method == "POST":
         producto.nombre = request.POST.get('nombre')
         producto.descripcion = request.POST.get('descripcion')
@@ -53,9 +55,10 @@ def editar_producto(request, id):
         producto.imagen = request.POST.get('imagen')
         producto.stock = request.POST.get('stock')
         producto.save()
+
         return redirect('lista_productos')
 
-    return render(request, 'productos/add_product.html', {'producto': producto})
+    return render(request, 'productos/edit_product.html', {'producto': producto, 'categorias': categorias})
 
 
 def eliminar_producto(request, id):
