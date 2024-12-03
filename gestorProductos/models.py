@@ -10,6 +10,7 @@ class Producto(models.Model):
     descripcion = models.TextField()
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, default=1)
     imagen = models.TextField(default='')
+    created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.nombre

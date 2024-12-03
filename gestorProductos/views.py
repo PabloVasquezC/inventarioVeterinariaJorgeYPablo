@@ -33,4 +33,16 @@ def agregar_producto(request):
 
 def editar_producto(request, id):
     producto = Producto.objects.get(id=id)
-    return render(request, 'productos/edit_product.html', {'producto': producto})
+    if request.method == "POST":
+        producto.nombre = request.POST.get('nombre')
+        producto.descripcion = request.POST.get('descripcion')
+        producto.precio = request.POST.get('precio')
+        producto.imagen = request.POST.get('imagen')
+        producto.stock = request.POST.get('stock')
+        producto.save()
+        return redirect('lista_productos')
+
+    return render(request, 'productos/add_product.html', {'producto': producto})
+
+
+
