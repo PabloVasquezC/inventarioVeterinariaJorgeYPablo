@@ -76,14 +76,15 @@
                 <input type="text" class="form-control-file" id="imagen" name="imagen" required>
             </div>
             {% comment %} Display ALL categories and post the id of the selected category {% endcomment %}
-            {% comment %} <div class="form-group">
-                <label for="categoria">Categoria</label>
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
                 <select class="form-control" id="categoria" name="categoria" required>
                     {% for categoria in categorias %}
-                        <option value="{{ categoria.nombre }}">{{ categoria.nombre }} </option>
+                    <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
                     {% endfor %}
                 </select>
-            </div> {% endcomment %}
+            </div>
+            
             <button type="submit" class="btn btn-primary">Agregar</button>
         </form>
     </div>

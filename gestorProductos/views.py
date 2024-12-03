@@ -17,13 +17,17 @@ def lista_productos(request):
     return render(request, 'productos/products.html', {'productos': productos, 'categorias': categorias})
 
 def agregar_producto(request):
+    categorias = Categoria.objects.all()  # Obtén todas las categorías
+
     if request.method == "POST":
         nombre = request.POST.get('nombre')
         descripcion = request.POST.get('descripcion')
         precio = request.POST.get('precio')
         imagen = request.POST.get('imagen')
         stock = request.POST.get('stock')
-        
+        categoria_id = request.POST.get('categoria')
+
+        categoria = Categoria.objects.get(id=categoria_id)  # Obtén la categoría seleccionada
 
         # Guardar el producto en la base de datos
         Producto.objects.create(
@@ -32,12 +36,13 @@ def agregar_producto(request):
             precio=precio,
             imagen=imagen,
             stock=stock,
+            categoria=categoria,
             created_by=request.user
         )
-        # Mensaje de éxito
-        return redirect('lista_productos')  # Redirige al listado de productos
+        return redirect('lista_productos')
 
-    return render(request, 'productos/add_product.html')
+    return render(request, 'productos/add_product.html', {'categorias': categorias})
+
 
 def editar_producto(request, id):
     producto = Producto.objects.get(id=id)
