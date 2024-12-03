@@ -5,9 +5,15 @@ from django.urls import reverse_lazy
 from .models import Producto
 from .models import Categoria
 
+
 def lista_productos(request):
-    productos = Producto.objects.all()  
+    if request.user.is_staff:
+        productos = Producto.objects.all()
+    else:
+        productos = Producto.objects.filter(created_by=request.user)
+    
     categorias = Categoria.objects.all()
+
     return render(request, 'productos/products.html', {'productos': productos, 'categorias': categorias})
 
 def agregar_producto(request):
@@ -17,6 +23,7 @@ def agregar_producto(request):
         precio = request.POST.get('precio')
         imagen = request.POST.get('imagen')
         stock = request.POST.get('stock')
+        
 
         # Guardar el producto en la base de datos
         Producto.objects.create(
@@ -25,6 +32,7 @@ def agregar_producto(request):
             precio=precio,
             imagen=imagen,
             stock=stock,
+            created_by=request.user
         )
         # Mensaje de éxito
         return redirect('lista_productos')  # Redirige al listado de productos
