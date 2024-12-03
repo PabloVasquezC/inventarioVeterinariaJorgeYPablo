@@ -17,7 +17,7 @@ class EditUserView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = EditUserForm
     template_name = "registration/edit_user.html"
-    success_url = reverse_lazy("index")  # Cambia "index" si tu URL principal es distinta
+    success_url = reverse_lazy("home")  
 
     def get_object(self):
         # Devuelve el usuario autenticado para evitar editar otros usuarios
