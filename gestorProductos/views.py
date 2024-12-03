@@ -45,4 +45,8 @@ def editar_producto(request, id):
     return render(request, 'productos/add_product.html', {'producto': producto})
 
 
+# def eliminar_producto(request, id):
+#     producto = Producto.objects.get(id=id)
+#     producto.delete()
+#     return redirect('lista_productos')
 
