@@ -66,11 +66,11 @@
                                     </button>
 
                                     {% comment %} accion de eliminar solo si es que eres admin {% endcomment %}
-                                    {% comment %} {% if user.is_staff %}
+                                    {% if user.is_staff %}
                                     <button class="btn btn-danger">
                                         <a href="{% url 'eliminar_producto' producto.id %}" class="text-white">Eliminar</a>
                                     </button>
-                                    {% endif %} {% endcomment %}
+                                    {% endif %} 
                                 </td>
                                     
                             </tr>
