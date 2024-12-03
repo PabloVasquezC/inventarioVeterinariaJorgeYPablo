@@ -16,7 +16,6 @@ def agregar_producto(request):
         descripcion = request.POST.get('descripcion')
         precio = request.POST.get('precio')
         imagen = request.POST.get('imagen')
-        # categoria = request.POST.get('categoria')
         stock = request.POST.get('stock')
 
         # Guardar el producto en la base de datos
@@ -26,12 +25,9 @@ def agregar_producto(request):
             precio=precio,
             imagen=imagen,
             stock=stock,
-            # categoria=categoria
-            
         )
-        messages.success(request, "Producto agregado exitosamente")
-        success_url = reverse_lazy('lista_productos')
-        return redirect('lista_productos') 
+        # Mensaje de éxito
+        return redirect('lista_productos')  # Redirige al listado de productos
 
     return render(request, 'productos/add_product.html')
 
