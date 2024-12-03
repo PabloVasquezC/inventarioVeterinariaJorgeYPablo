@@ -44,6 +44,25 @@ def agregar_producto(request):
     return render(request, 'productos/add_product.html', {'categorias': categorias})
 
 
+# def editar_producto(request, id):
+#     producto = Producto.objects.get(id=id)
+#     categorias = Categoria.objects.all()  # Obtén todas las categorías
+
+#     if request.method == "POST":
+#         producto.nombre = request.POST.get('nombre')
+#         producto.descripcion = request.POST.get('descripcion')
+#         producto.precio = request.POST.get('precio')
+#         producto.imagen = request.POST.get('imagen')
+#         producto.stock = request.POST.get('stock')
+#         categoria_id = request.POST.get('categoria')
+        
+#         producto.save()
+        
+
+#         return redirect('lista_productos')
+
+#     return render(request, 'productos/edit_product.html', {'producto': producto, 'categorias': categorias})
+
 def editar_producto(request, id):
     producto = Producto.objects.get(id=id)
     categorias = Categoria.objects.all()  # Obtén todas las categorías
@@ -55,13 +74,15 @@ def editar_producto(request, id):
         producto.imagen = request.POST.get('imagen')
         producto.stock = request.POST.get('stock')
         categoria_id = request.POST.get('categoria')
-        producto.save()
         
-        categoria = Categoria.objects.get(id=categoria_id)  # Obtén la categoría seleccionada
+        # Asignar la nueva categoría seleccionada
+        producto.categoria = Categoria.objects.get(id=categoria_id)
 
+        producto.save()
         return redirect('lista_productos')
 
     return render(request, 'productos/edit_product.html', {'producto': producto, 'categorias': categorias})
+
 
 
 def eliminar_producto(request, id):
