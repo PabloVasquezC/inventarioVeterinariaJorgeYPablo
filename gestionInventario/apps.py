@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GestoruserConfig(AppConfig):
+class GestioninventarioConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'gestorUser'
+    name = 'gestionInventario'

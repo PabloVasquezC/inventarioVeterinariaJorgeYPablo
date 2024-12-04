@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GestorproductosConfig(AppConfig):
+class GeneracionInformesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'gestorProductos'
+    name = 'generacionInformes'

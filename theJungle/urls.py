@@ -20,8 +20,8 @@ from django.urls import path
 
 from django.urls import path, include
 from django.views.generic.base import TemplateView
-from gestorUser.views import index
-from gestorProductos.views import lista_productos
+from generacionInformes.views import index
+from registroVentas.views import lista_productos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
