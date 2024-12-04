@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'generacionInformes',
     'registroVentas',
-    'gestionInformes'
+    'gestionInventario'
     
 ]
 
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'inventarioVeterinariaJorgeYPablo.urls'
+ROOT_URLCONF = 'theJungle.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'inventarioVeterinariaJorgeYPablo.wsgi.application'
+WSGI_APPLICATION = 'theJungle.wsgi.application'
 
 
 import pymysql
