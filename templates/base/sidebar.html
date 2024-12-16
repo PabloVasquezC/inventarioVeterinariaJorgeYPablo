@@ -3,9 +3,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-paw"></i>
+            <i class="fas fa-doc"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Veterinaria J&P</div>
+        <div class="sidebar-brand-text mx-3">The Jungle</div>
     </a>
 
     <!-- Divider -->
@@ -15,7 +15,17 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'lista_productos' %}">
             <i class="fa-solid fa-cart-shopping"></i>            
-        <span >Productos</span></a>
+        <span >Informes</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_productos' %}">
+            <i class="fa-solid fa-cart-shopping"></i>            
+        <span >Ventas</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_productos' %}">
+            <i class="fa-solid fa-cart-shopping"></i>            
+        <span >Inventario</span></a>
     </li>
     {% if user.is_superuser %}
     <!-- Divider -->

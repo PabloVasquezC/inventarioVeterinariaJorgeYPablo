@@ -1,6 +1,6 @@
 from django.urls import path
 
-from registroVentas.views import *
+from gestionInventario.views import *
 
 
 urlpatterns = [
