@@ -4,7 +4,13 @@ from django.contrib import admin
 from django.contrib import admin
 from .models import Producto, Categoria
 
-admin.site.register(Producto)
 admin.site.register(Categoria)
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'categoria', 'precio') 
+    list_filter = ('fecha',)  
+    search_fields = ('nombre',)  
+
 
 
