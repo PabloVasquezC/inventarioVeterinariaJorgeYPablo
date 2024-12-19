@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>{% block titulo %}{% endblock %}</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+        {% include 'base/sidebar.html' %}
+        
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                {% include 'base/topbar.html' %}
+
+                <div class="container-fluid">
+                    <div class="d-flex">
+                        <h1>Ventas</h1>
+                        <button class="btn btn-success mx-4">
+                            <a href="{% url 'agregar_producto' %}" class="text-white">Agregar venta</a>
+                        </button>
+                    </div>
+
+                    <!-- Tabla de productos -->
+                    <table id="productosTable" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Total</th>
+                                <th>N° Boleta</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for venta in ventas %}
+                            <tr>
+                                <td>{{ venta.fecha }}</td>
+                                <td>{{ venta.total }}</td>
+                                <td>{{ venta.numero_boleta }}</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <a href="{% url 'editar_venta' venta.id %}" class="text-white">Editar</a>
+                                    </button>
+
+                                    {% comment %} accion de eliminar solo si es que eres admin {% endcomment %}
+                                    {% if user.is_staff %}
+                                    <button class="btn btn-danger">
+                                        <a href="{% url 'eliminar_venta' venta.id %}" class="text-white">Eliminar</a>
+                                    </button>
+                                    {% endif %} 
+                                </td>
+                                    
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% include 'base/footer.html' %}
+        </div>
+    </div>
+
+    <!-- Bootstrap and Core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+
+    <!-- Inicialización de DataTable -->
+    <script>
+        $(document).ready(function() {
+            $('#productosTable').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ ventas por página",
+                    "zeroRecords": "No se encontraron ventas",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay ventas disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ ventas totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

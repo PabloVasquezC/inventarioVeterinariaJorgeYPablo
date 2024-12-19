@@ -1,11 +1,10 @@
 from django.urls import path
 
-from gestionInventario.views import *
-
+from registroVentas.views import *
 
 urlpatterns = [
-    path('lista_productos/', lista_productos, name='lista_productos'),
-    path('agregar_producto/', agregar_producto, name='agregar_producto'),
-    path('editar_producto/<int:id>/', editar_producto, name='editar_producto'),
-    path('eliminar_producto/<int:id>/', eliminar_producto, name='eliminar_producto'),
+    path('lista_ventas/', lista_ventas, name='lista_ventas'),
+    path('agregar_venta/', agregar_venta, name='agregar_venta'),
+    path('editar_venta/<int:id>/', editar_venta, name='editar_venta'),
+    path('eliminar_venta/<int:id>/', eliminar_venta, name='eliminar_venta'),
 ]
