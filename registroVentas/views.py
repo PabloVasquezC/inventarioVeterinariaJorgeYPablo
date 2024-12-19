@@ -8,12 +8,10 @@ from .models import Venta
 
 
 def lista_ventas(request):
-    if request.user.is_staff:
-        ventas = Venta.objects.all()
-    else:
-        productos = Venta.objects.filter(ingresado_por=request.user)
     
-    return render(request, 'ventas/ventas.html', {'ventas': ventas})
+    ventas = Venta.objects.all()
+    
+    return render(request, 'ventas/sales.html', {'ventas': ventas})
 
 
 def agregar_venta(request):
