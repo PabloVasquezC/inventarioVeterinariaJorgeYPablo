@@ -87,12 +87,3 @@ def eliminar_producto(request, id):
     producto.delete()
     return redirect('lista_productos')
 
-def ventas(request):
-    if request.user.is_staff:
-        ventas = Producto.objects.all()
-    else:
-        productos = Producto.objects.filter(ingresado_por=request.user)
-    
-    categorias = Categoria.objects.all()
-
-    return render(request, 'productos/products.html', {'productos': productos, 'categorias': categorias})

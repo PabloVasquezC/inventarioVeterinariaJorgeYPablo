@@ -35,3 +35,16 @@ class SignUpView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
     success_message = "¡Usuario creado exitosamente!"
+    
+
+# Create your views here.
+from django.shortcuts import render
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from .models import DetalleVenta
+
+def lista_detalles_venta(request):
+    
+    detalles = DetalleVenta.objects.all()
+    
+    return render(request, 'informes/informes.html', {'detalle': detalles})

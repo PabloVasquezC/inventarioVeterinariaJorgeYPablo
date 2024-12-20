@@ -57,11 +57,11 @@
                         
                             <tr>
                                 <td>
-                                    <img src="{{ producto.imagen }}" alt="Imagen del producto" style="width: 50px; height: 50px; border-radius: 50%;">
+                                    <img src="{{ producto.imagen }}" alt="Imagen del producto" style="width: 100px; height: 100px; border-radius: 50%;">
                                 </td>
                                 <td>{{ producto.nombre }}</td>
                                 <td>{{ producto.descripcion }}</td>
-                                <td>{{ producto.categoria }}</td>
+                                <td>{{ producto.categoria.nombre }}</td>
                                 <td>${{ producto.precio }} CLP</td>
                                 <td>
                                     <button class="btn btn-primary">

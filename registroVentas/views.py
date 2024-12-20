@@ -28,7 +28,7 @@ def agregar_venta(request):
         )
         return redirect('lista_ventas')
 
-    return render(request, 'ventas/add_venta.html')
+    return render(request, 'ventas/add_sale.html')
 
 # def editar_producto(request, id):
 #     producto = Producto.objects.get(id=id)
@@ -60,7 +60,7 @@ def editar_venta(request, id):
         venta.save()
         return redirect('lista_productos')
 
-    return render(request, 'ventas/edit_venta.html', {'venta': venta})
+    return render(request, 'ventas/edit_sale.html', {'venta': venta})
 
 
 def eliminar_venta(request, id):
